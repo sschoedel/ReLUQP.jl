@@ -89,8 +89,6 @@ for (i, rho_mat) in enumerate(m.bias_mat_ρs)
 end
 clipboard(bias_mat_rhos_str)
 
-
-
 ######### W #########
 layer_rho_Ws_str = ""
 for (i, layer) in enumerate(m.layer_ρs)
@@ -153,7 +151,6 @@ for (i, layer) in enumerate(m.layer_ρs)
     end
 end
 clipboard(layer_rho_us_str)
-
 
 ##
 
