@@ -155,8 +155,6 @@ end
 clipboard(layer_rho_us_str)
 
 
-
-
 ##
 
 # Actually solve the problem now
@@ -164,9 +162,6 @@ m = ReLUQP.setup(H, g, A, l, u; ρ_min=1e-2, ρ_max=1e2, iters_btw_checks=1);
 results = ReLUQP.solve(m)
 
 ##
-
-
-
 
 clipboard(results.iters)
 clipboard(results.J)
