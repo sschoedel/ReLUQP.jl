@@ -220,7 +220,7 @@ function calculate_residuals!(m::Solver)
     return nothing
 end
 
-"""
+d"""
 Update the penalty parameter and index based on the primal and dual residual 
 """
 function update_penalty(m::Solver, ρ::Float64, ρ_ind::Int64)
@@ -358,7 +358,7 @@ function generate_results(m::Solver)
     return results
 end
 
-"""
+""""
 Print solver details including dimensions, conditioning, settings, and scaling
 """
 function print_solver_details(m::Solver)
