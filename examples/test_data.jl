@@ -1,4 +1,5 @@
-using Pkg; Pkg.activate(joinpath(@__DIR__, ".."));
+# using Pkg; Pkg.activate(joinpath(@__DIR__, ".."));
+using Pkg; Pkg.activate(@__DIR__);
 using ReLUQP
 
 
@@ -156,6 +157,46 @@ clipboard(layer_rho_us_str)
 
 # Actually solve the problem now
 m = ReLUQP.setup(H, g, A, l, u; ρ_min=1e-2, ρ_max=1e2, iters_btw_checks=1);
+results = ReLUQP.solve(m)
+
+##
+
+clipboard(results.iters)
+clipboard(results.J)
+clipboard(m.workspace.primal_res)
+clipboard(m.workspace.dual_res)
+copyToClipboard(results.x; prefix="x_expected << ")
+copyToClipboard(results.z; prefix="z_expected << ")
+copyToClipboard(results.λ; prefix="lam_expected << ")
+
+
+##
+
+
+g2 = [ 5.0564;
+       3.7214;
+      -2.9234;
+       5.7643;
+       1.8683]
+
+l2 = [-5;
+      -12;
+       120;
+      -Inf;
+       1.58857;
+      -0.118917]
+
+u2 = [ 320;
+       250;
+       123.123;
+       3.123;
+       82;
+       103]
+
+# Update problem and solve again
+
+m = ReLUQP.setup(H, g, A, l, u; ρ_min=1e-2, ρ_max=1e2, iters_btw_checks=1);
+ReLUQP.update!(m; g=g2, l=l2, u=u2)
 results = ReLUQP.solve(m)
 
 ##
